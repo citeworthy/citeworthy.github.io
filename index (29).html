@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Citeworthy — be the firm AI names when buyers ask</title>
+
+<!-- Citeworthy favicon (inline SVG, no asset file) -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%227%22%20fill%3D%22%2312161D%22/%3E%3Ctext%20x%3D%2214.5%22%20y%3D%2223.5%22%20font-family%3D%22Georgia%2C%27Times%20New%20Roman%27%2Cserif%22%20font-size%3D%2223%22%20font-weight%3D%22700%22%20fill%3D%22%23F5F1E8%22%20text-anchor%3D%22middle%22%3Ec%3C/text%3E%3Ccircle%20cx%3D%2224.5%22%20cy%3D%2222.5%22%20r%3D%222.7%22%20fill%3D%22%232D5BFF%22/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%227%22%20fill%3D%22%2312161D%22/%3E%3Ctext%20x%3D%2214.5%22%20y%3D%2223.5%22%20font-family%3D%22Georgia%2C%27Times%20New%20Roman%27%2Cserif%22%20font-size%3D%2223%22%20font-weight%3D%22700%22%20fill%3D%22%23F5F1E8%22%20text-anchor%3D%22middle%22%3Ec%3C/text%3E%3Ccircle%20cx%3D%2224.5%22%20cy%3D%2222.5%22%20r%3D%222.7%22%20fill%3D%22%232D5BFF%22/%3E%3C/svg%3E">
+<meta name="description" content="Buyers ask AI for a shortlist before they ever reach you. Citeworthy makes sure you're on it — scored, evidence-led, with the fixes.">
+
+<!-- Citeworthy webfonts (Fraunces + Inter + Source Serif 4 fallback) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+
+<style>
+/* ============================================================
+   Citeworthy — tokens (exact hex + type from the brand kit).
+   Four colors, one accent (Signal blue, kept to <=10%).
+   ============================================================ */
+:root{
+  --ink:#12161D; --bone:#F5F1E8; --signal:#2D5BFF; --slate:#6B7280;
+  --ink-12:#12161D1f; --ink-06:#12161D0f; --bone-70:#F5F1E8b3; --bone-12:#F5F1E81f;
+  --signal-press:#1E45D6; --signal-12:#2D5BFF1f; --slate-50:#6B728080;
+  --surface-card:#FFFFFF; --surface-card-dark:#1A2029;
+
+  --font-serif:'Fraunces','Source Serif 4',Georgia,serif;
+  --font-sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --font-mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+
+  --radius-sm:6px; --radius-md:10px; --radius-lg:16px; --radius-pill:999px;
+  --shadow-card:0 1px 2px rgba(18,22,29,.04),0 8px 24px rgba(18,22,29,.06);
+  --shadow-float:0 2px 6px rgba(18,22,29,.06),0 18px 48px rgba(18,22,29,.10);
+  --line:1px solid var(--ink-12);
+  --ease-calm:cubic-bezier(0.22,0.61,0.36,1);
+
+  --container:1120px;
+  --header-h:73px;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--bone); color:var(--ink);
+  font-family:var(--font-sans); font-size:17px; line-height:1.5;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+a{color:inherit; text-decoration:none; -webkit-tap-highlight-color:transparent;}
+h1,h2,h3,p{margin:0;}
+img{max-width:100%;}
+.wrap{max-width:var(--container); margin:0 auto; padding-left:24px; padding-right:24px;}
+
+/* --- type roles --- */
+.eyebrow{font-family:var(--font-sans); font-weight:600; font-size:12px;
+  letter-spacing:.06em; text-transform:uppercase; color:var(--slate);}
+.eyebrow.on-ink{color:var(--bone-70);}
+
+/* --- the signature underline tick --- */
+.tick{display:block; height:5px; border-radius:2px; background:var(--signal);
+  width:96px; transform-origin:left center;}
+.tick.draw{animation:tick-draw 2.4s var(--ease-calm) .2s infinite;}
+@keyframes tick-draw{
+  0%{transform:scaleX(0);} 22%{transform:scaleX(1);}
+  82%{transform:scaleX(1);} 100%{transform:scaleX(1); opacity:1;}
+}
+
+/* --- wordmark --- */
+.wordmark{font-family:var(--font-sans); font-weight:600; letter-spacing:-0.02em;
+  font-size:20px; color:var(--ink); display:inline-flex; align-items:flex-end; gap:0;}
+.wordmark .dot{color:var(--signal);}
+
+/* --- icon links --- */
+.iconlink{display:inline-flex; align-items:center; justify-content:center;
+  width:38px; height:38px; border-radius:var(--radius-pill); border:1px solid var(--ink-12);
+  color:var(--ink); transition:border-color .18s var(--ease-calm), color .18s var(--ease-calm), transform .18s var(--ease-calm);}
+.iconlink:hover{border-color:var(--signal); color:var(--signal); transform:translateY(-1px);}
+.iconlink svg{width:17px; height:17px; display:block;}
+footer .iconlink{border-color:var(--ink-12);}
+
+/* --- buttons --- */
+.btn{position:relative; display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  font-family:var(--font-sans); font-weight:600; line-height:1; cursor:pointer;
+  border-radius:var(--radius-pill); border:1px solid transparent; white-space:nowrap;
+  transition:background .16s var(--ease-calm), transform .16s var(--ease-calm), border-color .16s var(--ease-calm), box-shadow .16s var(--ease-calm);}
+.btn:active{transform:scale(.98);}
+.btn-accent{background:var(--signal); color:#fff; box-shadow:0 1px 2px rgba(45,91,255,.18);}
+.btn-accent:hover{background:var(--signal-press); box-shadow:0 8px 22px rgba(45,91,255,.26); transform:translateY(-1px);}
+.btn-accent:active{transform:scale(.98);}
+.btn-lg{font-size:16px; padding:16px 26px;}
+.btn-md{font-size:15px; padding:12px 20px;}
+.btn-sm{font-size:14px; padding:9px 16px;}
+.btn-ghost-ink{background:var(--bone); color:var(--ink);}
+.btn-ghost-ink:hover{background:#fff; transform:translateY(-1px); box-shadow:var(--shadow-float);}
+.btn .arr{transition:transform .18s var(--ease-calm); display:inline-block;}
+.btn:hover .arr{transform:translateX(3px);}
+
+/* --- header (condenses on scroll) --- */
+header{position:sticky; top:0; z-index:50;
+  background:rgba(245,241,232,.85); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s var(--ease-calm), box-shadow .3s var(--ease-calm);}
+header .wrap{display:flex; align-items:center; justify-content:space-between;
+  padding-top:16px; padding-bottom:16px; transition:padding .3s var(--ease-calm);}
+header.condensed{border-bottom:var(--line); box-shadow:0 1px 12px rgba(18,22,29,.05);}
+header.condensed .wrap{padding-top:9px; padding-bottom:9px;}
+header nav{display:flex; align-items:center; gap:22px;}
+header nav a.navlink{font-size:15px; font-weight:500; color:var(--ink); transition:color .14s;}
+header nav a.navlink:hover{color:var(--signal);}
+header .nav-icons{display:flex; align-items:center; gap:10px;}
+@media (max-width:820px){ header nav .navlink{display:none;} header .nav-icons{display:none;} }
+
+/* --- scroll reveal --- */
+.reveal{opacity:0; transform:translateY(22px); transition:opacity .7s var(--ease-calm), transform .7s var(--ease-calm);}
+.reveal.in{opacity:1; transform:none;}
+.reveal.d1{transition-delay:.08s;} .reveal.d2{transition-delay:.16s;} .reveal.d3{transition-delay:.24s;}
+
+/* --- hero --- */
+.hero{padding-top:96px; padding-bottom:96px; position:relative;}
+.hero-grid{display:grid; grid-template-columns:1.08fr .92fr; gap:60px; align-items:center;}
+.hero h1{font-family:var(--font-serif); font-weight:600; letter-spacing:-0.01em; line-height:1.04;
+  color:var(--ink); font-size:clamp(40px,6.2vw,64px); max-width:15ch;}
+.hero .sub{margin-top:22px; max-width:42ch; font-size:19px; line-height:1.6; color:var(--slate);}
+.hero .cta-row{margin-top:32px; display:flex; flex-wrap:wrap; gap:14px; align-items:center;}
+.hero .reassure{margin-top:20px; font-size:14px; color:var(--slate); display:flex; flex-wrap:wrap; gap:8px 18px;}
+.hero .reassure span{display:inline-flex; align-items:center; gap:8px;}
+.hero .reassure .d{width:5px; height:5px; border-radius:50%; background:var(--ink-12);}
+
+/* --- answer card (signature pattern) --- */
+.answer-card{background:var(--surface-card); border:var(--line); border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-card); padding:28px 30px; display:flex; flex-direction:column; gap:18px; max-width:520px; margin-left:auto;
+  transition:box-shadow .3s var(--ease-calm), transform .3s var(--ease-calm);}
+.answer-card:hover{box-shadow:var(--shadow-float); transform:translateY(-2px);}
+.answer-card .q{display:flex; align-items:center; gap:10px;}
+.answer-card .q .dot{width:7px; height:7px; border-radius:50%; background:var(--slate); flex:0 0 auto;}
+.answer-card .q .qt{font-size:15px; font-weight:500; color:var(--slate);}
+.answer-card .rule{height:1px; background:var(--ink-06);}
+.answer-card .lead{font-size:17px; line-height:1.65; color:var(--ink);}
+.answer-card ol{margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:13px;}
+.answer-card li{display:flex; align-items:baseline; gap:12px;}
+.answer-card li .idx{font-family:var(--font-mono); font-size:13px; color:var(--slate-50); width:18px; flex:0 0 auto;}
+.answer-card li .nm{font-size:17px; color:var(--ink);}
+.answer-card li.cited .nm{color:var(--signal); font-weight:600;}
+.answer-card li .inline-tick{display:inline-block; vertical-align:middle; margin-left:8px; width:22px; height:4px; border-radius:2px; background:var(--signal);}
+.answer-card .src{font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--slate-50);}
+
+/* --- section primitives --- */
+section.band{padding-top:112px; padding-bottom:112px;}
+.section-head{display:flex; flex-direction:column; gap:18px; max-width:38ch;}
+.section-head h2{font-family:var(--font-serif); font-weight:600; letter-spacing:-0.01em; line-height:1.1;
+  font-size:clamp(30px,4.4vw,40px); color:var(--ink);}
+
+/* --- how it works --- */
+.steps{margin-top:44px; display:grid; grid-template-columns:repeat(3,1fr); border-top:var(--line);}
+.step{padding:36px 32px 8px 0; display:flex; flex-direction:column; gap:14px; border-right:var(--line);}
+.step:last-child{border-right:none;}
+.step:not(:first-child){padding-left:32px;}
+.step .n{font-family:var(--font-mono); font-size:13px; color:var(--signal); letter-spacing:.04em;}
+.step h3{font-family:var(--font-serif); font-weight:600; font-size:24px; color:var(--ink); line-height:1.1;}
+.step p{font-size:16px; line-height:1.6; color:var(--slate);}
+.step .cite-key{margin-top:2px; display:flex; flex-wrap:wrap; gap:7px;}
+.step .cite-key b{font-family:var(--font-sans); font-weight:600; font-size:13px; color:var(--ink);
+  border:var(--line); border-radius:var(--radius-pill); padding:5px 11px; background:#fff;}
+
+/* --- offer --- */
+.offer{background:var(--ink); color:var(--bone);}
+.offer .section-head h2{color:var(--bone);}
+.offer .section-head p{color:var(--bone-70); font-size:18px; line-height:1.6;}
+.tiers{margin-top:48px; display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+.tier{background:var(--surface-card-dark); border:1px solid var(--bone-12); border-radius:var(--radius-lg);
+  padding:34px 30px; display:flex; flex-direction:column; gap:18px;
+  transition:transform .3s var(--ease-calm), border-color .3s var(--ease-calm);}
+.tier:hover{transform:translateY(-3px); border-color:var(--bone-70);}
+.tier .t-name{font-size:13px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--bone-70);}
+.tier .price{display:flex; align-items:baseline; gap:8px;}
+.tier .price .amt{font-family:var(--font-serif); font-weight:600; font-size:42px; line-height:1; color:var(--bone);}
+.tier .price .per{font-size:14px; color:var(--bone-70);}
+.tier .turn{font-size:14px; color:var(--signal); font-weight:600;}
+.tier .desc{font-size:15px; line-height:1.6; color:var(--bone-70); flex:1;}
+.tier .btn-accent{width:100%;}
+.tier.lead{border-color:var(--signal);}
+.tier.lead:hover{border-color:var(--signal);}
+.tier .ribbon{align-self:flex-start; font-size:11px; letter-spacing:.06em; text-transform:uppercase;
+  color:var(--signal); font-weight:600;}
+
+/* --- trust row --- */
+.trust .row{display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-top:var(--line);}
+.trust .cell{padding:36px 32px 8px 0; border-right:var(--line); display:flex; flex-direction:column; gap:12px;}
+.trust .cell:last-child{border-right:none;}
+.trust .cell:not(:first-child){padding-left:32px;}
+.trust .cell .big{font-family:var(--font-serif); font-weight:600; font-size:26px; color:var(--ink); line-height:1.1;}
+.trust .cell p{font-size:16px; line-height:1.6; color:var(--slate);}
+
+/* --- final cta band --- */
+.cta-band{background:var(--ink); color:var(--bone);}
+.cta-band .wrap{padding-top:100px; padding-bottom:100px; display:flex; align-items:center;
+  justify-content:space-between; gap:40px; flex-wrap:wrap;}
+.cta-band h2{font-family:var(--font-serif); font-weight:600; letter-spacing:-0.01em; line-height:1.06;
+  font-size:clamp(30px,4.6vw,42px); color:var(--bone); max-width:16ch;}
+.cta-band .tick{margin-top:18px;}
+
+/* --- footer --- */
+footer{border-top:var(--line);}
+footer .wrap{padding-top:36px; padding-bottom:48px; display:flex; align-items:center;
+  justify-content:space-between; gap:24px; flex-wrap:wrap;}
+footer .fl{display:flex; align-items:center; gap:16px; flex-wrap:wrap;}
+footer .links{display:flex; flex-wrap:wrap; gap:8px 22px; font-size:14px; color:var(--slate);}
+footer .links a{transition:color .14s;}
+footer .links a:hover{color:var(--signal);}
+footer .sep{color:var(--ink-12);}
+footer .fico{display:flex; gap:10px;}
+
+/* --- mobile sticky CTA --- */
+.mobile-cta{position:fixed; left:16px; right:16px; bottom:16px; z-index:60;
+  display:none; transform:translateY(140%); transition:transform .4s var(--ease-calm);}
+.mobile-cta.show{transform:none;}
+.mobile-cta .btn{width:100%; box-shadow:0 8px 28px rgba(18,22,29,.22);}
+@media (max-width:760px){ .mobile-cta{display:block;} }
+
+/* ============================================================
+   Responsive — mobile-first refinements
+   ============================================================ */
+@media (max-width:920px){
+  .hero-grid{grid-template-columns:1fr; gap:44px;}
+  .answer-card{margin-left:0; max-width:560px;}
+  .tiers{grid-template-columns:1fr;}
+  .steps,.trust .row{grid-template-columns:1fr;}
+  .step,.trust .cell{border-right:none; border-bottom:var(--line); padding:28px 0;}
+  .step:last-child,.trust .cell:last-child{border-bottom:none;}
+  .step:not(:first-child),.trust .cell:not(:first-child){padding-left:0;}
+}
+@media (max-width:760px){
+  .hero{padding-top:56px; padding-bottom:64px;}
+  section.band{padding-top:76px; padding-bottom:76px;}
+  .cta-band .wrap{padding-top:68px; padding-bottom:68px;}
+  .btn-lg{width:100%;}
+  .hero .cta-row{flex-direction:column; align-items:stretch;}
+}
+
+/* ============================================================
+   Reduced motion — disable all non-essential motion
+   ============================================================ */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  .tick.draw{animation:none;}
+  .reveal{opacity:1 !important; transform:none !important; transition:none !important;}
+  .btn,.answer-card,.tier,.iconlink,.mobile-cta,header,header .wrap{transition:none !important;}
+  .btn:hover,.answer-card:hover,.tier:hover,.iconlink:hover{transform:none !important;}
+  #hero-inner{transform:none !important; opacity:1 !important;}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header id="site-header">
+  <div class="wrap">
+    <a href="#top" class="wordmark" aria-label="Citeworthy home">citeworthy<span class="dot">.</span></a>
+    <nav>
+      <a class="navlink" href="#how">How it works</a>
+      <a class="navlink" href="#offer">Offer</a>
+      <a class="navlink" href="#method">Method</a>
+      <div class="nav-icons">
+        <a class="iconlink" href="https://linkedin.com/company/citeworthy-studio" target="_blank" rel="noopener" aria-label="Citeworthy on LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+        </a>
+        <a class="iconlink" href="https://instagram.com/citeworthy" target="_blank" rel="noopener" aria-label="Citeworthy on Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
+        </a>
+      </div>
+      <a class="btn btn-accent btn-sm" href="https://cal.com/citeworthy" target="_blank" rel="noopener">Free Snapshot&nbsp;<span class="arr">&rarr;</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="wrap hero-grid" id="hero-inner">
+      <div>
+        <div class="eyebrow reveal">AI search visibility</div>
+        <h1 class="reveal d1" style="margin-top:18px;">be the firm AI names when buyers ask for a shortlist.</h1>
+        <span class="tick draw reveal d1" style="margin-top:24px; width:120px;"></span>
+        <p class="sub reveal d2">Buyers ask AI for a shortlist before they ever reach you. Be on it.</p>
+        <div class="cta-row reveal d2">
+          <a class="btn btn-accent btn-lg" href="https://cal.com/citeworthy" target="_blank" rel="noopener">Get your free AI Visibility Snapshot&nbsp;<span class="arr">&rarr;</span></a>
+        </div>
+        <div class="reassure reveal d3">
+          <span>Scored /100</span>
+          <span><i class="d"></i>Evidence-led</span>
+          <span><i class="d"></i>No guesswork</span>
+        </div>
+      </div>
+
+      <!-- signature mock AI-answer card — illustrative, not a client result -->
+      <div class="answer-card reveal d2" aria-label="Illustrative example of an AI shortlist answer">
+        <div class="q">
+          <span class="dot"></span>
+          <span class="qt">who should we shortlist for this?</span>
+        </div>
+        <div class="rule"></div>
+        <p class="lead">A few firms come up repeatedly for this:</p>
+        <ol>
+          <li class="cited"><span class="idx">01</span><span class="nm">your firm<span class="inline-tick"></span></span></li>
+          <li><span class="idx">02</span><span class="nm">a competitor</span></li>
+          <li><span class="idx">03</span><span class="nm">another competitor</span></li>
+        </ol>
+        <div class="src">Illustrative &middot; what &ldquo;cited&rdquo; looks like</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= HOW IT WORKS ================= -->
+  <section class="band wrap" id="how">
+    <div class="section-head reveal">
+      <div class="eyebrow">How it works</div>
+      <h2>Three steps from invisible to named.</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <span class="n">01</span>
+        <h3>We run your buyers' AI queries</h3>
+        <p>The real prompts your buyers type before they ever reach you &mdash; and we see who gets named today.</p>
+      </div>
+      <div class="step reveal d1">
+        <span class="n">02</span>
+        <h3>We score you on the CITE method</h3>
+        <p>A clear /100, broken down across four factors models weigh when they decide who to cite.</p>
+        <div class="cite-key">
+          <b>Coverage</b><b>Interpretation</b><b>Trust</b><b>Extractability</b>
+        </div>
+      </div>
+      <div class="step reveal d2">
+        <span class="n">03</span>
+        <h3>You get the fixes</h3>
+        <p>A prioritised list of what to change and why &mdash; so the next answer names you, not them.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= OFFER ================= -->
+  <section class="band offer" id="offer">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow on-ink">The offer</div>
+        <h2>Start small. Scale when it works.</h2>
+        <p>One transparent path: see where you stand, fix it fast, then stay ahead. No retainers to get started, no lock-in.</p>
+      </div>
+      <div class="tiers">
+        <div class="tier reveal">
+          <span class="t-name">Snapshot</span>
+          <div class="price"><span class="amt">&pound;295</span></div>
+          <span class="turn">Delivered in 48 hours</span>
+          <p class="desc">Your CITE score /100 against your buyers' real AI queries, plus the top fixes to make first.</p>
+          <a class="btn btn-accent btn-md" href="https://cal.com/citeworthy" target="_blank" rel="noopener">Book a Snapshot</a>
+        </div>
+        <div class="tier lead reveal d1">
+          <span class="ribbon">Most teams start here</span>
+          <span class="t-name">Sprint</span>
+          <div class="price"><span class="amt">&pound;1,800</span></div>
+          <span class="turn">4-week engagement</span>
+          <p class="desc">We work the fixes with you &mdash; sources, pages, and signals &mdash; and re-score so the change is on the record.</p>
+          <a class="btn btn-accent btn-md" href="https://cal.com/citeworthy" target="_blank" rel="noopener">Talk about a Sprint</a>
+        </div>
+        <div class="tier reveal d2">
+          <span class="t-name">Retainer</span>
+          <div class="price"><span class="amt">&pound;2,500</span><span class="per">/ month</span></div>
+          <span class="turn">Ongoing visibility</span>
+          <p class="desc">Continuous monitoring, re-scoring, and a monthly brief as the questions &mdash; and the answers &mdash; keep shifting.</p>
+          <a class="btn btn-accent btn-md" href="https://cal.com/citeworthy" target="_blank" rel="noopener">Discuss a Retainer</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TRUST / METHOD ================= -->
+  <section class="band wrap" id="method">
+    <div class="section-head reveal">
+      <div class="eyebrow">The method</div>
+      <h2>Why you can trust the number.</h2>
+    </div>
+    <div class="trust">
+      <div class="row">
+        <div class="cell reveal">
+          <span class="big">Scored /100</span>
+          <p>A single, repeatable score across Coverage, Interpretation, Trust and Extractability &mdash; so progress is measurable, not a feeling.</p>
+        </div>
+        <div class="cell reveal d1">
+          <span class="big">Evidence-led</span>
+          <p>Every score points back to the actual AI answers it came from. You see the questions, the shortlists, and where you stand in them.</p>
+        </div>
+        <div class="cell reveal d2">
+          <span class="big">No guesswork</span>
+          <p>No vanity metrics and no SEO folklore. We test against the prompts your buyers really use, then hand you the fixes that move the score.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FINAL CTA BAND ================= -->
+  <section class="cta-band">
+    <div class="wrap">
+      <div class="reveal">
+        <h2>be the firm AI names when buyers ask.</h2>
+        <span class="tick" style="width:96px;"></span>
+      </div>
+      <a class="btn btn-ghost-ink btn-lg reveal d1" href="https://cal.com/citeworthy" target="_blank" rel="noopener">Get your free AI Visibility Snapshot&nbsp;<span class="arr">&rarr;</span></a>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <a href="#top" class="wordmark" style="font-size:18px;">citeworthy<span class="dot">.</span></a>
+    <div class="fl">
+      <div class="links">
+        <a href="mailto:citeworthy.studio@gmail.com">citeworthy.studio@gmail.com</a>
+        <span class="sep">&middot;</span>
+        <a href="https://cal.com/citeworthy" target="_blank" rel="noopener">Book a call</a>
+      </div>
+      <div class="fico">
+        <a class="iconlink" href="https://linkedin.com/company/citeworthy-studio" target="_blank" rel="noopener" aria-label="Citeworthy on LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+        </a>
+        <a class="iconlink" href="https://instagram.com/citeworthy" target="_blank" rel="noopener" aria-label="Citeworthy on Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= MOBILE STICKY CTA ================= -->
+<a class="btn btn-accent mobile-cta" id="mobile-cta" href="https://cal.com/citeworthy" target="_blank" rel="noopener">Get your Snapshot&nbsp;<span class="arr">&rarr;</span></a>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  /* --- scroll reveal --- */
+  var reveals = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)){
+    reveals.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold:0.12, rootMargin:'0px 0px -8% 0px'});
+    reveals.forEach(function(el){ io.observe(el); });
+  }
+
+  /* --- header condense + hero parallax/opacity + mobile CTA --- */
+  var header = document.getElementById('site-header');
+  var heroInner = document.getElementById('hero-inner');
+  var mobileCta = document.getElementById('mobile-cta');
+  var ticking = false;
+
+  function onScroll(){
+    var y = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (y > 12) header.classList.add('condensed'); else header.classList.remove('condensed');
+
+    if (!reduce && heroInner){
+      var p = Math.min(y / 600, 1);
+      heroInner.style.transform = 'translateY(' + (y * 0.12) + 'px)';
+      heroInner.style.opacity = String(1 - p * 0.85);
+    }
+
+    /* show mobile CTA after leaving hero */
+    if (y > 480) mobileCta.classList.add('show'); else mobileCta.classList.remove('show');
+
+    ticking = false;
+  }
+  window.addEventListener('scroll', function(){
+    if (!ticking){ window.requestAnimationFrame(onScroll); ticking = true; }
+  }, {passive:true});
+  onScroll();
+})();
+</script>
+
+</body>
+</html>
